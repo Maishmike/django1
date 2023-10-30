@@ -2,13 +2,15 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 
-def welcome(request):
-    return HttpResponse("Welcome to emobilis")
+def home(request):
+    return render(request, 'home.html')
 
 
 def about(request):
-    return HttpResponse("About emobilis")
+    return render(request, 'about.html')
 
 
 def contact(request):
-    return HttpResponse("Contact Emobilis")
+    return render(request, 'contact.html')
+
+
