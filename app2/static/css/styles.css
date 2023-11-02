@@ -1,3 +1,6 @@
 body{
     background-color: gold;
 }
+.activated{
+    color: blueviolet;
+}

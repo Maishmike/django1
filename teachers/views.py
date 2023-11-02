@@ -1,16 +1,71 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from . models import Students, Sliders
+from django.contrib import messages
 
 
 def home(request):
-    return render(request, 'home.html')
+    return render(request, 'home.html', {'navbar': 'home'})
 
 
 def about(request):
-    return render(request, 'about.html')
+    return render(request, 'about.html', {'navbar': 'about'})
 
 
 def contact(request):
-    return render(request, 'contact.html')
+    return render(request, 'contact.html', {'navbar': 'contact'})
 
 
+def add(request):
+    return render(request, 'add.html', {'navbar': 'add'})
+
+
+def view(request):
+    data = Students.objects.all()
+    return render(request, 'viewdata.html', {'navbar': 'view', 'data': data})
+
+
+def delete(request, id):
+    student = Students.objects.get(id=id)
+    student.delete()
+    messages.warning(request, 'Student deleted')
+    return redirect("/viewdata")
+
+
+def insert(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        number = request.POST.get('number')
+        image = request.FILES['image']
+
+        query = Students(name=name, email=email, number=number, image=image)
+        query.save()
+        messages.success(request, 'Saved successfully!')
+        return redirect("/viewdata")
+
+    return redirect("/viewdata")
+
+
+def edit(request, id):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        number = request.POST.get('number')
+        image = request.FILES['image']
+        student = Students.objects.get(id=id)
+        student.name = name
+        student.email = email
+        student.number = number
+        student.image = image
+        student.save()
+        messages.success(request, 'Saved successfully!')
+        return redirect("/viewdata")
+
+    student = Students.objects.get(id=id)
+    return render(request, 'edit.html', {'student': student})
+
+
+def sliders(request):
+    slides = Sliders.objects.all()
+    return render(request, 'sliders.html', {'navbar': 'sliders'})
