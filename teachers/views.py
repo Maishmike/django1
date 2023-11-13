@@ -2,6 +2,14 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from . models import Students, Sliders
 from django.contrib import messages
+from django.core.paginator import Paginator
+from django.views.generic import ListView, DetailView, CreateView
+from . models import CustomUser
+from teachers.form import CustomUserCreationForm
+from django.contrib.auth.views import LoginView
+from django.urls import reverse_lazy
+from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
 
 
 def home(request):
@@ -20,8 +28,16 @@ def add(request):
     return render(request, 'add.html', {'navbar': 'add'})
 
 
+#def view(request):
+ #   data = Students.objects.all()
+  #  return render(request, 'viewdata.html', {'navbar': 'view', 'data': data})
+
+
 def view(request):
-    data = Students.objects.all()
+
+    paginate = Paginator(Students.objects.all(), 2)
+    page = request.GET.get('page')
+    data = paginate.get_page(page)
     return render(request, 'viewdata.html', {'navbar': 'view', 'data': data})
 
 
@@ -68,4 +84,25 @@ def edit(request, id):
 
 def sliders(request):
     slides = Sliders.objects.all()
-    return render(request, 'sliders.html', {'navbar': 'sliders'})
+    return render(request, 'sliders.html', {'navbar': 'sliders', 'slides': slides})
+
+
+def search(request):
+    if request.method == 'GET':
+        query = request.GET.get('query')
+        if query:
+            students = Students.objects.filter(name__icontains=query)
+            return render(request, 'search.html', {'data': students})
+    return render(request, 'search.html')
+
+
+class SignUp(CreateView):
+    model = CustomUser
+    form_class = CustomUserCreationForm
+    template_name = 'register.html'
+    success_url = reverse_lazy('login')
+
+
+class UserLogin(LoginView):
+    template_name = 'login.html'
+

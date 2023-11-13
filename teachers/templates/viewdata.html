@@ -1,70 +1,106 @@
 {% extends 'layout.html' %}
 
 {% block body %}
+    <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+            <form class="d-flex" role="search" method="get" action="{% url 'teachers:search' %}">
+                <input class="form-control me-2" type="search" placeholder="Search" name="query" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
     <br><br>
     <div class="row container-fluid mx-5">
-        <div class="col-md-6">
-            <h2>Students</h2>
-            {% for message in messages %}
+        {% if data %}
+            <div class="col-md-6">
 
-                <div class="alert alert-{{ messages.tag }} alert-dismissible fade show" role="alert">
-                    {{ message }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
+                <h2>Students</h2>
+                {% for message in messages %}
 
-            {% endfor %}
-            <table class="table">
-                <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Phone</th>
-                    <th scope="col">Image</th>
-                    <th scope="col">Edit</th>
-                    <th scope="col">Delete</th>
-                </tr>
-                </thead>
-
-                <tbody>
-                {% for student in data %}
-                    <tr>
-                        <td >{{ student.id }} </td>
-                        <td> {{ student.name }} </td>
-                        <td> {{ student.email }} </td>
-                        <td> {{ student.number }} </td>
-                        <td> <img src="http://127.0.0.1:8000/media/{{ student.image }}" alt="{{ student.name }}" width="100"> </td>
-                        <td>
-                            <a href="/edit/{{ student.id }}" class="btn btn-warning">Edit</a>
-                        </td>
-                        <td>
-                            <a href="/delete/{{ student.id }}" class="btn btn-danger">Delete</a>
-                        </td>
-                    </tr>
-                {% endfor %}
-
-                </tbody>
-            </table>
-        </div>
-
-        <br><br><br><br>
-        <div class="row">
-            {% for students in data %}
-                <div class="col-md-3">
-                <div class="card" >
-                    <img src="http://127.0.0.1:8000/media/{{ students.image }}" class="card-img-top vh-25" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ students.id }}</h5>
-                        <p class="card-text">{{ students.name}}</p>
+                    <div class="alert alert-{{ messages.tag }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">{{ students.email}}</li>
-                        <li class="list-group-item">{{ students.number}}</li>
-                    </ul>
-                </div>
-                </div>
-            {% endfor %}
-        </div>
 
+                {% endfor %}
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    {% for student in data %}
+                        <tr>
+                            <td >{{ student.id }} </td>
+                            <td> {{ student.name }} </td>
+                            <td> {{ student.email }} </td>
+                            <td> {{ student.number }} </td>
+                            <td> <img src="http://127.0.0.1:8000/media/{{ student.image }}" alt="{{ student.name }}" width="100"> </td>
+                            <td>
+                                <a href="/edit/{{ student.id }}" class="btn btn-warning">Edit</a>
+                            </td>
+                            <td>
+                                <a href="/delete/{{ student.id }}" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    {% if data.has_previous %}
+                        <li class="page-item"><a href="?page=1" class="page-link">&laquo First</a></li>
+                        <li class="page-item"><a href="?page={{ data.previous_page_number }}" class="page-link">Previous</a></li>
+                    {% endif %}
+                <li class="page-item disabled"><a href="" class="page-link">Page {{ data.number }} of {{ data.paginator.num_pages }}</a></li>
+                {% for i in nums %}
+                    <li class="page-item"><a href="?page={{ forloop.counter }}" class="page-link">{{ forloop.counter }}</a></li>
+                {% endfor %}
+                {% if data.has_next %}
+                    <li class="page-item"><a href="?page={{ data.next_page_number }}" class="page-link">Next</a></li>
+                    <li class="page-item"><a href="?page={{ data.paginator.num_pages}}" class="page-link">Last &raquo</a></li>
+                {% endif %}
+                </ul>
+            </nav>
+
+            <br><br><br><br>
+            <p>Grid</p>
+            <div class="row">
+                {% for students in data %}
+                    <div class="col-md-3">
+                    <div class="card" >
+                        <img src="http://127.0.0.1:8000/media/{{ students.image }}" class="card-img-top vh-25" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ students.id }}</h5>
+                            <p class="card-text">{{ students.name}}</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">{{ students.email}}</li>
+                            <li class="list-group-item">{{ students.number}}</li>
+                        </ul>
+                    </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="container text-center">
+                <h2>No data</h2>
+                <p><a href="{% url 'teachers:add' %}">Add data?</a></p>
+                <div class="container-fluid">
+                    <img class="" src="https://imgs.search.brave.com/PvC9IAGwit3YICW5TaWcRtOB1omvoKfL_llC1ZEy9Zw/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9zdG9y/aWVzLmZyZWVwaWts/YWJzLmNvbS9zdG9y/YWdlLzE2MzgvNC1O/by1EYXRhLWNvcGlh/X01lc2EtZGUtdHJh/YmFqby0xLnN2Zw.svg" alt="Not found">
+                </div>
+            </div>
+        {% endif %}
     </div>
 {% endblock %}

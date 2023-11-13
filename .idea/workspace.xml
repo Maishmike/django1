@@ -5,20 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f8b2ff90-626a-4b1f-8270-f362f66ec510" name="Changes" comment="more learning">
-      <change afterPath="$PROJECT_DIR$/teachers/templates/add.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/teachers/templates/viewdata.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app2/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app2/static/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/app2/static/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pipfile" beforeDir="false" afterPath="$PROJECT_DIR$/Pipfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pipfile.lock" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app2/templates/homeapp2.html" beforeDir="false" afterPath="$PROJECT_DIR$/app2/templates/homeapp2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app2/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/app2/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app2/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app2/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/emobilis/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/emobilis/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/emobilis/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/emobilis/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/media/uploads/sliders/ad_close.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/teachers/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/teachers/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teachers/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/teachers/migrations/0002_sliders.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/teachers/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/teachers/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/teachers/templates/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/teachers/templates/layout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teachers/templates/sliders.html" beforeDir="false" afterPath="$PROJECT_DIR$/teachers/templates/sliders.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teachers/templates/viewdata.html" beforeDir="false" afterPath="$PROJECT_DIR$/teachers/templates/viewdata.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/teachers/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/teachers/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/teachers/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/teachers/views.py" afterDir="false" />
     </list>
@@ -33,14 +36,17 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="CSS File" />
+        <option value="Python Script" />
         <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/emobilis/settings.py" root0="SKIP_INSPECTION" />
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -62,17 +68,18 @@
     "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "dart.analysis.tool.window.visible": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/mikem/Desktop/Emobilis_L/Python/Django/furnituredjango",
+    "last_opened_file_path": "C:/Users/mikem/.virtualenvs/emobilis-jFY-kq1L",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -126,6 +133,9 @@
       <workItem from="1698679287984" duration="22645000" />
       <workItem from="1698773074136" duration="8789000" />
       <workItem from="1698913096143" duration="8330000" />
+      <workItem from="1699816638872" duration="22708000" />
+      <workItem from="1699889921009" duration="2670000" />
+      <workItem from="1699894647751" duration="3211000" />
     </task>
     <task id="LOCAL-00001" summary="more learning">
       <option name="closed" value="true" />
