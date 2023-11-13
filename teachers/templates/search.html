@@ -1,0 +1,81 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <h2>Search Results</h2>
+    <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+            <form class="d-flex" role="search" method="get" action="{% url 'teachers:search' %}">
+                <input class="form-control me-2" type="search" placeholder="Search" name="query" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    <br><br>
+    <div class="row container-fluid mx-5">
+        {% if data %}
+        <div class="col-md-6">
+            <h2>Students</h2>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                {% for student in data %}
+                    <tr>
+                        <td >{{ student.id }} </td>
+                        <td> {{ student.name }} </td>
+                        <td> {{ student.email }} </td>
+                        <td> {{ student.number }} </td>
+                        <td> <img src="http://127.0.0.1:8000/media/{{ student.image }}" alt="{{ student.name }}" width="100"> </td>
+                        <td>
+                            <a href="/edit/{{ student.id }}" class="btn btn-warning">Edit</a>
+                        </td>
+                        <td>
+                            <a href="/delete/{{ student.id }}" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+
+
+        <br><br><br><br>
+        <p><h2>Grid</h2></p>
+        <div class="row">
+            {% for students in data %}
+                <div class="col-md-3">
+                <div class="card" >
+                    <img src="http://127.0.0.1:8000/media/{{ students.image }}" class="card-img-top vh-25" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ students.id }}</h5>
+                        <p class="card-text">{{ students.name}}</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">{{ students.email}}</li>
+                        <li class="list-group-item">{{ students.number}}</li>
+                    </ul>
+                </div>
+                </div>
+            {% endfor %}
+        </div>
+        {% else %}
+            <div class="container text-center">
+                <h2>Didn't Find your search..../h2>
+                <div class="container-fluid">
+                    <img class="mx-auto" src="https://imgs.search.brave.com/NrSKFGPud3V8GxrMcsrxZlaCEqyUxcxSEKXlyA6dktY/rs:fit:500:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzA0LzcyLzY3LzQ1/LzM2MF9GXzQ3MjY3/NDU5NV9nb2N6TnVi/blNIOFJUdWVVTmli/N1ZCUUhwaFVja2d5/Qi5qcGc" alt="Not found">
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
